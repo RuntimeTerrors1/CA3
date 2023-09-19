@@ -1,19 +1,27 @@
-from Flask import flask
+from flask import Flask
 
 app = Flask(__name__)
 
-@app("/")
+@app.route("/")
 def hello():
     print("Hello")
+    return "Hello, World!"
 
-@app("/add/<num1>/<num2>")
+@app.route("/add/<int:num1>/<int:num2>")
 def add(num1, num2):
-    return num1+num2
- 
-@app.route("/div/<num1>/<num2>")
-def div (num1,num2):
-    return num1/num2
+    return str(num1 + num2)
 
-@app("/mul/<a>/<b>")
+@app.route("/div/<int:num1>/<int:num2>")
+def div(num1, num2):
+    try:
+        result = num1 / num2
+        return str(result)
+    except ZeroDivisionError:
+        return "Error: Division by zero"
+
+@app.route("/mul/<int:a>/<int:b>")
 def mul(a, b):
-    return a * b
+    return str(a * b)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")

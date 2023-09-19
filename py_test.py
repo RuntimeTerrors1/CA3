@@ -1,13 +1,19 @@
-from app import add
-from app import div
-from app import mul
+from app import app
 
 def test_add():
-    assert 6 == add(4, 2)
+    with app.test_client() as client:
+        response = client.get('/add/4/2')
+        assert response.get_data(as_text=True) == '6'
 
 def test_div():
-    assert 2 == div(6,3)
+    with app.test_client() as client:
+        response = client.get('/div/6/3')
+        assert response.get_data(as_text=True) == '2.0'
 
 def test_multiply():
-    assert mul(2, 3) == 6
-    assert mul(1, 2) == 2
+    with app.test_client() as client:
+        response = client.get('/mul/2/3')
+        assert response.get_data(as_text=True) == '6'
+
+        response = client.get('/mul/1/2')
+        assert response.get_data(as_text=True) == '2'

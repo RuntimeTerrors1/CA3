@@ -1,8 +1,10 @@
-FROM python
-ENV USERNAME=runtimeterrorss1 
+FROM python:3
+ENV USERNAME runtimeterrorss1 
 RUN mkdir -p /home/ca3
+WORKDIR /home/ca3
 COPY . /home/ca3
 EXPOSE 5000
-WORKDIR /home/ca3
-RUN pip install -r requirements.txt
-CMD ["python3","app.py"]
+
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install flask
+CMD ["python","app.py"]
