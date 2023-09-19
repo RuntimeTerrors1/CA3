@@ -7,11 +7,11 @@ def hello():
     print("Hello")
     return "Hello, World!"
 
-@app.route("/add/<int:num1>/<int:num2>")
+@app.route("/calc/add/<int:num1>/<int:num2>")
 def add(num1, num2):
     return str(num1 + num2)
 
-@app.route("/div/<int:num1>/<int:num2>")
+@app.route("/calc/div/<int:num1>/<int:num2>")
 def div(num1, num2):
     try:
         result = num1 / num2
@@ -19,7 +19,7 @@ def div(num1, num2):
     except ZeroDivisionError:
         return "Error: Division by zero"
 
-@app.route("/mul/<int:a>/<int:b>")
+@app.route("/calc/mul/<int:a>/<int:b>")
 def mul(a, b):
     return str(a * b)
 
