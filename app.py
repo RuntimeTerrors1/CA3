@@ -13,3 +13,7 @@ def add(num1, num2):
 @app.route("/div/<num1>/<num2>")
 def div (num1,num2):
     return num1/num2
+
+@app("/mul/<a>/<b>")
+def mul(a, b):
+    return a * b
