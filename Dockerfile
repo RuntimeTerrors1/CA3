@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 ENV USERNAME=runtimeterrorss1 
 RUN mkdir -p /home/dockerdemo
 COPY . /home/dockerdemo
